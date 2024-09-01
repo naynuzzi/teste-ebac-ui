@@ -1,5 +1,6 @@
 
 ///<reference types="cypress"/>
+const cypress = require('cypress');
 const perfil= require('../../fixtures/perfil.json')
 describe('Funcionalidade: login', () => {
    
@@ -49,7 +50,7 @@ describe('Funcionalidade: login', () => {
      
 
    });
-   it.only('Deve fazer login com sucesso- Usando Fixture', () => {
+   it('Deve fazer login com sucesso- Usando Fixture', () => {
       cy.fixture('perfil').then(dados =>{
       cy.get('#username').type(dados.usuario, { log: false})
       cy.get('#password').type(dados.senha,  { log: false})
@@ -58,4 +59,10 @@ describe('Funcionalidade: login', () => {
       })
       
    });
+
+   it.only('Deve fazer login com sucesso- Usando comando customizado', () => {
+      cy.login("naynuztest@teste.com.br", 'ayla1234')
+      cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, naynuztest (não é naynuztest? Sair)')
+   });
 })
+  
