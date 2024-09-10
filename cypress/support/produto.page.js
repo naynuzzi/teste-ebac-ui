@@ -1,3 +1,5 @@
+
+import cmd from "../../cypress/support/commands";
 class ProdutoPage{
 
      visitarUrl(){
@@ -21,14 +23,11 @@ class ProdutoPage{
       cy.visit(`produtos/${urlFormatada}`)
     }
     
-    addProdutoCarrinho(tamanho, cor, quantidade){
-      //cy.get('.button-variable-item-M').click()
+    addProdutoCarrinho(tamanho, cor, quantidade) {
       cy.get(`.button-variable-item-${tamanho}`).click()
       cy.get(`.button-variable-item-${cor}`).click()
-      //cy.get('.input-text').check('value').eq(1)
       cy.get('.input-text').clear().type(quantidade)
       cy.get('.single_add_to_cart_button').click()
     }
-  
 }
 export default new ProdutoPage()
