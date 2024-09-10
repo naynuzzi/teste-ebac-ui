@@ -10,7 +10,7 @@ describe('Funcionalidade: Produtos', () => {
    
    it('Deve selecionar um produto da lista', () => {
       console.log("passou aqui!!!")
-       produtoPage.BuscarProdutoLista('Abominable Hoodie')
+       produtoPage.buscarProdutoLista('Abominable Hoodie')
 
        cy.get('#tab-title-description > a').should('contain' , 'Descrição')
    });
@@ -23,7 +23,7 @@ describe('Funcionalidade: Produtos', () => {
    });
 
    it('Deve visitar a página do produto', () => {
-      produtoPage.VisitarProduto('Stellar-Solar-Jacket')
+      produtoPage.visitarProduto('Stellar-Solar-Jacket')
       //cy.get('.product_title').should('contain', produto)
    });
 
@@ -44,7 +44,7 @@ describe('Funcionalidade: Produtos', () => {
       cy.get('.woocommerce-message').should('contain', '“Abominable Hoodie” foi adicionado no seu carrinho.')
    });
 
-   it.only('Deve adicionar mais de um produto ao carrinho', () => {
+   it('Deve adicionar mais de um produto ao carrinho', () => {
       let qtd = 3
       let tamanho = "M"
       let cor = "Green"
@@ -53,8 +53,8 @@ describe('Funcionalidade: Produtos', () => {
       produtoPage.buscarProduto(nome_produto)
       produtoPage.addProdutoCarrinho(tamanho, cor,  qtd)
 
-      cy.get('.woocommerce-message').should('contain', `${qtd} x "${nome_produto}" foram adicionados no seu carrinho.`)
-      //cy.get('.woocommerce-message').should('contain', '3 × “Ariel Roll Sleeve Sweatshirt” foram adicionados no seu carrinho.')
+      //cy.get('.woocommerce-message').should('contain', qtd + ' x “Ariel Roll Sleeve Sweatshirt” foram adicionados no seu carrinho.')
+      cy.get('.woocommerce-message').should('contain', '3 × “Ariel Roll Sleeve Sweatshirt” foram adicionados no seu carrinho.')
    });
 
    it('Deve adicionar o produto ao carrinho buscando da  massa de dados', () => {
