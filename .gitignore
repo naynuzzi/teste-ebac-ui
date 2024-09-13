@@ -2,3 +2,9 @@
 !/node_modules
 */node_modules
 /node_modules/*
+
+# Remoção das pastas de videos e imagens
+/screenshots
+screenshots/*
+/videos
+videos/*
